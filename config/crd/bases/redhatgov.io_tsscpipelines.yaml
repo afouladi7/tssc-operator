@@ -11,7 +11,9 @@ spec:
     kind: TsscPipeline
     listKind: TsscPipelineList
     plural: tsscpipelines
-    singular: tsscpipeline
+    singular: 
+  gitURL:
+    type: string
   scope: Namespaced
   versions:
   - name: v1alpha1

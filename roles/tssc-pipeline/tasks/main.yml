@@ -65,9 +65,7 @@
     status_code: 201,409
   register: gitea_repo_migration_task
   changed_when: gitea_repo_migration_task.status == 201
-  loop:
-  - reference-quarkus-mvn-jenkins
-  - reference-quarkus-mvn-jenkins-config
+  loop: {{ gitURL }}
   loop_control:
     loop_var: repo_name
     label: repo_name
