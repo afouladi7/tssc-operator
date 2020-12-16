@@ -12,8 +12,6 @@ spec:
     listKind: TsscPipelineList
     plural: tsscpipelines
     singular: 
-  gitURL:
-    type: string
   scope: Namespaced
   versions:
   - name: v1alpha1
@@ -38,12 +36,20 @@ spec:
           metadata:
             type: object
           spec:
-            description: Spec defines the desired state of TsscPipeline
-            properties:
-              tsscPipeline:
-                description: Defines the desired state of the TsscPipeline Deployment
-                type: object
+            description: Spec defines the desired state of DevSecOpsWorkshop
             type: object
+            properties:
+              devsecopsworkshop:
+                description: Defines the desired state of the DevSecOpsWorkshop Deployment
+                type: object
+                properties:
+                  giturl:
+                    description: giturl
+                    type: object
+                    properties:
+                      name:
+                        description: giturl
+                        type: string
           status:
             description: Status defines the observed state of TsscPipeline
             properties:

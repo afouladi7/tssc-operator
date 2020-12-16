@@ -3,3 +3,4 @@ kind: TsscPipeline
 metadata:
   name: tsscpipeline-sample
 spec: {}
+giturl: https://github.com/spring-projects/spring-petclinic.git
