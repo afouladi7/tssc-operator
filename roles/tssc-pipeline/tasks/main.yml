@@ -58,14 +58,16 @@
       Authorization: 'token {{ gitea_token }}'
     body: |
       {
-        "clone_addr": "https://github.com/RedHatGov/{{ repo_name }}.git",
+        "clone_addr": "{{ giturl }}",
         "uid": {{ gitea_org_response.json.id }},
         "repo_name": "{{ repo_name }}"
       }
     status_code: 201,409
   register: gitea_repo_migration_task
   changed_when: gitea_repo_migration_task.status == 201
-  loop: {{ giturl }}
+  loop:
+  - repo_name
+  - "{{ tssc_pipeline.gitconfig }}"
   loop_control:
     loop_var: repo_name
     label: repo_name
