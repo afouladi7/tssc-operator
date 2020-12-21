@@ -48,17 +48,22 @@
       Authorization: 'token {{ gitea_token }}'
   register: gitea_org_response
 
+- name: debug giturl
+  debug:
+    msg: "{{ tssc_pipeline.gitconfig }} HELLOOOOOOOO"
+
 - name: Migrate {{ repo_name }} From Upstream into Gitea, in platform org
   uri:
     url: 'https://gitea-{{ tssc_namespace }}.apps.{{ full_cluster_name }}/api/v1/repos/migrate'
     validate_certs: no
     body_format: json
+    msg: "{{ tssc_pipeline.gitconfig }} HELLOOOOOOOO"
     method: POST
     headers:
       Authorization: 'token {{ gitea_token }}'
     body: |
       {
-        "clone_addr": "{{ giturl }}",
+        "clone_addr": "{{ tssc_pipeline.gitconfig }}",
         "uid": {{ gitea_org_response.json.id }},
         "repo_name": "{{ repo_name }}"
       }
@@ -84,3 +89,12 @@
     headers:
       Authorization: 'Bearer {{ ocp_token }}'
     status_code: "302"
+
+- name: debug giturl
+  debug:
+    msg: "'{{ tssc_pipeline.gitconfig }}' HELLOOOOOOOO"
+    verbosity: 4
+
+- name: Test
+  debug:
+    msg: "Hello"
